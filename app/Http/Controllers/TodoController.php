@@ -12,7 +12,7 @@ class TodoController extends Controller
         $todos = [
         (object) [
             'id' => 1,
-            'title' => 'タイトル1',
+            'title' => 'タイトル1_',
             'status' => '状態1',
             'due_date' => '期限日１',
             'created_at' => now(),
