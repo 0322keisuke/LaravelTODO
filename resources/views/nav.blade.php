@@ -2,6 +2,4 @@
 
   <a class="navbar-brand" href="/"><i class="far fa-list-alt"></i> TODO</a>
 
-  </ul>
-
 </nav>
