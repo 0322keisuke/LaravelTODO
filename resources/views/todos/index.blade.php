@@ -3,6 +3,7 @@
 @section('title', 'test_タイトル')
 
 @section('content')
+@include('nav')
   <div class="container">
     @foreach($todos as $todo) 
       <div class="card mt-3">
