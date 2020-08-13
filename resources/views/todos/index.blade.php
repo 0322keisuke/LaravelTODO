@@ -4,15 +4,25 @@
 
 @section('content')
 @include('nav')
-  <div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>状態</th>
+      <th>期限</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
     @foreach($todos as $todo) 
-      <div class="card mt-3">
-        <div class="card-body d-flex flex-row">
-            <div class="font-weight-bold">
-              {{ $todo->title }} 
-            </div> 
-        </div>
-      </div>
+    <tr>
+        <td> {{ $todo->title }} </td>
+        <td>
+        <span class="label">{{ $todo->status }}</span>
+        </td>
+        <td>{{ $todo->due_date}}</td>
+        <td><a href="#">編集</a></td>
+    </tr>
     @endforeach
-  </div>
+  </table>
 @endsection
