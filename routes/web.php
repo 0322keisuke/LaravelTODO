@@ -10,8 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'TodoController@index');
-
+// Route::get('/', 'TodoController@index');
+Route::get('/folders/{id}/tasks', 'TodoController@index')->name('tasks.index');
 
 /*
 Route::get('/', function () {
