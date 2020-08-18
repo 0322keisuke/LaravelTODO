@@ -14,6 +14,7 @@ class TodoController extends Controller
         $todos = Todo::all()->sortByDesc('created_at');
         return view('todos.index', [
             'folders' => $folders,
-            'todos' => $todos]);
+            'todos' => $todos
+        ]);
     }
 }
