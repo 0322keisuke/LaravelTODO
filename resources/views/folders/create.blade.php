@@ -11,14 +11,14 @@
       <div class="card card-block">
         <div class="card-header primary-color white-text">フォルダを追加する</div>
         <div class="card-text">
-          <form action="{{ route('folders.create') }}" method="post">
+          <form action="{{ route('folders.store') }}" method="post">
             @csrf
             <div class="form-group m-2">
               <label for="title">フォルダ名</label>
               <input type="text" class="form-control" name="title" id="title" />
             </div>
             <div class="text-right">
-              <button type="submit" class="btn btn-primary">送信</button>
+              <button type="submit" class="btn btn-primary">追加</button>
             </div>
           </form>
         </div>
