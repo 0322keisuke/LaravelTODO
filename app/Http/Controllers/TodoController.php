@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Folder;
 use App\Todo;
+use App\Http\Requests\TodoRequest;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
@@ -16,5 +17,27 @@ class TodoController extends Controller
             'folders' => $folders,
             'todos' => $todos
         ]);
+    }
+
+    public function create()
+    {
+        return view('todos.create');
+    }
+
+    public function store(TodoRequest $request, Todo $todo, int $id)
+    {
+        $current_folder = Folder::find($id);
+
+        $todo->folder_id =  $current_folder->folder_id;
+        $todo->title = $request->title;
+        $todo->status = 1;
+        $todo->due_date = $request->due_date;
+
+        $todo->save();
+        return redirect()->route(
+            'todos.index',
+            ['id' => 1]
+            // ['id' => $current_folder->id]
+        );
     }
 }

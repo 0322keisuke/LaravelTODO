@@ -16,7 +16,7 @@
         </div>
         <div class="list-group">
           @foreach($folders as $folder)
-          <a href="{{ route('tasks.index', ['id' => $folder->id]) }}" class="list-group-item">
+          <a href="{{ route('todos.index', ['id' => $folder->id]) }}" class="list-group-item">
             {{ $folder->title }}
           </a>
           @endforeach
@@ -28,7 +28,7 @@
       <div class="card card-block">
         <div class="card-header primary-color white-text">タスク一覧</div>
         <div class="card-text text-center">
-          <a href="#" class="btn btn-default w-50 m-2">
+          <a href="{{ route('todos.create')}}" class="btn btn-default w-50 m-2">
             タスクを追加する
           </a>
         </div>
