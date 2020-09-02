@@ -28,7 +28,7 @@
       <div class="card card-block">
         <div class="card-header primary-color white-text">タスク一覧</div>
         <div class="card-text text-center">
-          <a href="{{ route('todos.create')}}" class="btn btn-default w-50 m-2">
+          <a href="{{ route('todos.create',['id' => 1])}}" class="btn btn-default w-50 m-2">
             タスクを追加する
           </a>
         </div>

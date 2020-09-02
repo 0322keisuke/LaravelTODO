@@ -14,7 +14,9 @@
 use App\Http\Controllers\TodoController;
 
 Route::get('/folders/{id}/todos', 'TodoController@index')->name('todos.index');
-Route::resource('/folders/{id}/todos', 'TodoController')->except(['index']);
+
+Route::get('/folders/{id}/todos/create', 'TodoController@create')->name('todos.create');
+Route::post('/folders/{id}/todos/create', 'TodoController@store');
 
 Route::resource('/folders', 'FolderController');
 

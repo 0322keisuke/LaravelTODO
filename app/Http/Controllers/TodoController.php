@@ -19,25 +19,28 @@ class TodoController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(int $id)
     {
-        return view('todos.create');
+        return view('todos.create', [
+            'folder_id' => $id
+        ]);
     }
 
     public function store(TodoRequest $request, Todo $todo, int $id)
     {
         $current_folder = Folder::find($id);
 
-        $todo->folder_id =  $current_folder->folder_id;
+        // $todo->folder_id =  $current_folder->folder_id;
         $todo->title = $request->title;
         $todo->status = 1;
         $todo->due_date = $request->due_date;
 
-        $todo->save();
+        $current_folder->todos()->save($todo);
+
         return redirect()->route(
             'todos.index',
+            // ['id' => $current_folder->id,]
             ['id' => 1]
-            // ['id' => $current_folder->id]
         );
     }
 }

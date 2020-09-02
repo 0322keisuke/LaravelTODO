@@ -11,7 +11,7 @@
       <div class="card card-block">
         <div class="card-header primary-color white-text">タスクを追加する</div>
         <div class="card-text">
-          <form action="{{ route('todos.store') }}" method="post">
+          <form action="{{ route('todos.create',['id' => $folder_id ]) }}" method="post">
             @csrf
             <div class="form-group m-2">
               <label for="title">タイトル名</label>
