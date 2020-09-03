@@ -10,7 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/folders/{id}/tasks', 'TodoController@index')->name('tasks.index');
+
+use App\Http\Controllers\TodoController;
+
+Route::get('/folders/{id}/todos', 'TodoController@index')->name('todos.index');
+
+Route::get('/folders/{id}/todos/create', 'TodoController@create')->name('todos.create');
+Route::post('/folders/{id}/todos/create', 'TodoController@store');
+
 Route::resource('/folders', 'FolderController');
 
 /*
