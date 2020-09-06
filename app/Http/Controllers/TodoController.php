@@ -9,12 +9,13 @@ use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
-    public function index()
+    public function index(int $id)
     {
         $folders = Folder::all()->sortByDesc('created_at');
         $todos = Todo::all()->sortByDesc('created_at');
         return view('todos.index', [
             'folders' => $folders,
+            'current_folder_id' => $id,
             'todos' => $todos
         ]);
     }
