@@ -12,7 +12,7 @@ class TodoController extends Controller
     public function index(int $id)
     {
         $folders = Folder::all()->sortByDesc('created_at');
-        $todos = Todo::all()->sortByDesc('created_at');
+        $todos = Todo::where('folder_id', $id)->get()->sortByDesc('created_at');
         return view('todos.index', [
             'folders' => $folders,
             'current_folder_id' => $id,
