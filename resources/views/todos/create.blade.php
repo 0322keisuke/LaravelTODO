@@ -18,9 +18,9 @@
             @csrf
             <div class="form-group m-2">
               <label for="title">タイトル名</label>
-              <input type="text" class="form-control" name="title" id="title" />
+              <input type="text" class="form-control" name="title" id="title" required value="{{old('title')}}" />
               <label for="title">期限</label>
-              <input type="text" class="form-control" name="due_date" id="due_date" />
+              <input type="text" class="form-control" name="due_date" id="due_date" required value="{{old('due_date')}}" />
             </div>
             <div class="text-right">
               <button type="submit" class="btn btn-primary">追加</button>
