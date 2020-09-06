@@ -16,7 +16,7 @@
         </div>
         <div class="list-group">
           @foreach($folders as $folder)
-          <a href="{{ route('todos.index', ['id' => $folder->id]) }}" class="list-group-item">
+          <a href="{{ route('todos.index', ['id' => $folder->id]) }}" class="list-group-item {{ $current_folder_id === $folder->id ? 'active' : '' }}">
             {{ $folder->title }}
           </a>
           @endforeach
@@ -28,7 +28,7 @@
       <div class="card card-block">
         <div class="card-header primary-color white-text">タスク一覧</div>
         <div class="card-text text-center">
-          <a href="{{ route('todos.create',['id' => 1])}}" class="btn btn-default w-50 m-2">
+          <a href="{{ route('todos.create',['id' => $current_folder_id])}}" class="btn btn-default w-50 m-2">
             タスクを追加する
           </a>
         </div>
@@ -46,7 +46,7 @@
             <tr>
               <td> {{ $todo->title }} </td>
               <td>
-                <span class="label">{{ $todo->status }}</span>
+                <span class="badge {{ $todo->status_class }}">{{ $todo->status_badge }}</span>
               </td>
               <td>{{ $todo->due_date}}</td>
               <td><a href="#">編集</a></td>
