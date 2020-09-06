@@ -46,7 +46,7 @@
             <tr>
               <td> {{ $todo->title }} </td>
               <td>
-                <span class="label">{{ $todo->status_label }}</span>
+                <span class="badge {{ $todo->status_class }}">{{ $todo->status_badge }}</span>
               </td>
               <td>{{ $todo->due_date}}</td>
               <td><a href="#">編集</a></td>

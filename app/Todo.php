@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Psy\Command\ListCommand\FunctionEnumerator;
 
 class Todo extends Model
 {
@@ -11,9 +12,9 @@ class Todo extends Model
      **/
 
     const STATUS = [
-        1 => ['label' => '未着手'],
-        2 => ['label' => '作業中'],
-        3 => ['label' => '完了'],
+        1 => ['badge' => '未着手', 'class' => 'badge-warning'],
+        2 => ['badge' => '作業中', 'class' => 'badge-info'],
+        3 => ['badge' => '完了', 'class' => 'badge-success'],
     ];
 
     /**
@@ -21,7 +22,7 @@ class Todo extends Model
      * @return string
      */
 
-    public function getStatusLabelAttribute()
+    public function getStatusBadgeAttribute()
     {
         //状態値
         $status = $this->attributes['status'];
@@ -31,6 +32,19 @@ class Todo extends Model
             return '';
         }
 
-        return self::STATUS[$status]['label'];
+        return self::STATUS[$status]['badge'];
+    }
+
+    public function getStatusClassAttribute()
+    {
+        //状態値
+        $status = $this->attributes['status'];
+
+        // 定義されていなければ空文字を返す
+        if (!isset(self::STATUS[$status])) {
+            return '';
+        }
+
+        return self::STATUS[$status]['class'];
     }
 }
