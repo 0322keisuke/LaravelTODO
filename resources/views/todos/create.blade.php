@@ -10,6 +10,9 @@
     <div class="col col-md-offset-3 col-md-6 m-2">
       <div class="card card-block">
         <div class="card-header primary-color white-text">タスクを追加する</div>
+
+        @include('error_card_list')
+
         <div class="card-text">
           <form action="{{ route('todos.create',['id' => $folder_id ]) }}" method="post">
             @csrf
