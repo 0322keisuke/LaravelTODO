@@ -46,4 +46,9 @@ class TodoController extends Controller
             ['id' => $current_folder->id,]
         );
     }
+
+    public function edit(Todo $todo)
+    {
+        return view('todos.edit', ['todo' => $todo]);
+    }
 }
