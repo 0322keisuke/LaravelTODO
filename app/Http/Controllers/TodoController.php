@@ -47,8 +47,26 @@ class TodoController extends Controller
         );
     }
 
-    public function edit(Todo $todo)
+    public function edit(Todo $todo, int $id)
     {
-        return view('todos.edit', ['todo' => $todo]);
+        return view('todos.edit', [
+            'todo' => $todo,
+            'folder_id' => $id,
+        ]);
+    }
+
+    public function update(TodoRequest $request, Todo $todo, int $id)
+    {
+        $current_folder = Folder::find($id);
+
+        $todo->title = $request->title;
+        $todo->due_date = $request->due_date;
+
+        $current_folder->todos()->save($todo);
+
+        return redirect()->route(
+            'todos.index',
+            ['id' => $id,]
+        );
     }
 }
