@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'タスク作成')
+@section('title', 'タスク編集')
 
 @include('nav')
 
@@ -9,13 +9,16 @@
   <div class="row">
     <div class="col col-md-offset-3 col-md-6 m-2">
       <div class="card card-block">
-        <div class="card-header primary-color white-text">タスクを追加する</div>
+        <div class="card-header primary-color white-text">タスクを編集する</div>
         @include('error_card_list')
         <div class="card-text">
-          <form action="{{ route('todos.create',['id' => $folder_id ]) }}" method="post">
+          <form method="post" action="{{ route('todos.update',[
+            'todo' => $todo,
+            'id' => $folder_id ]) }}">
+            @method('PATCH')
             @include('todos.form')
             <div class="text-right">
-              <button type="submit" class="btn btn-primary">追加</button>
+              <button type="submit" class="btn btn-primary">編集する</button>
             </div>
           </form>
         </div>

@@ -18,6 +18,10 @@ Route::get('/folders/{id}/todos', 'TodoController@index')->name('todos.index');
 Route::get('/folders/{id}/todos/create', 'TodoController@create')->name('todos.create');
 Route::post('/folders/{id}/todos/create', 'TodoController@store');
 
+Route::get('/folders/{id}/todos/{todo}/edit', 'TodoController@edit')->name('todos.edit');
+Route::match(['put', 'patch'], '/folders/{id}/todos/{todo}/update', 'TodoController@update')->name('todos.update');
+
+
 Route::resource('/folders', 'FolderController');
 
 /*

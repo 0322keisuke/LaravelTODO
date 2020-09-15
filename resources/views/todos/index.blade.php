@@ -49,7 +49,11 @@
                 <span class="badge {{ $todo->status_class }}">{{ $todo->status_badge }}</span>
               </td>
               <td>{{ $todo->due_date}}</td>
-              <td><a href="#">編集</a></td>
+              <td><a href="{{ route('todos.edit',[ 'todo' => $todo,
+                'id' => $current_folder_id])}}">
+                  <span class="badge badge-default">
+                    編集 </span></a>
+              </td>
             </tr>
             @endforeach
           </tbody>
