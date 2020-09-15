@@ -47,7 +47,7 @@ class TodoController extends Controller
         );
     }
 
-    public function edit(Todo $todo, int $id)
+    public function edit(int $id, Todo $todo)
     {
         return view('todos.edit', [
             'todo' => $todo,
@@ -55,7 +55,7 @@ class TodoController extends Controller
         ]);
     }
 
-    public function update(TodoRequest $request, Todo $todo, int $id)
+    public function update(int $id,  Todo $todo, TodoRequest $request)
     {
         $current_folder = Folder::find($id);
 
