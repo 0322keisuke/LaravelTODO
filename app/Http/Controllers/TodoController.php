@@ -69,4 +69,10 @@ class TodoController extends Controller
             ['id' => $id,]
         );
     }
+
+    public function destroy(int $id, Todo $todo)
+    {
+        $todo->delete();
+        return redirect()->route('todos.index', ['id' => $id]);
+    }
 }
