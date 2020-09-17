@@ -54,6 +54,37 @@
                   <span class="badge badge-default">
                     編集 </span></a>
               </td>
+              <td>
+                <a data-toggle="modal" data-target="#modal-delete-{{$todo->id}}">
+                  <span class="badge badge-danger"> 削除 </span>
+                </a>
+
+                <!-- modal -->
+                <div id="modal-delete-{{ $todo->id }}" class="modal fade" role="dialog">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-deader">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <form method="POST" action="{{route('todos.destroy',['todo'=> $todo,'id' => $current_folder_id])}}">
+                        @csrf
+                        @method('DELETE')
+                        <div class="modal-body">
+                          {{ $todo->title }}を削除します。よろしいですか？
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                          <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
+                          <button type="submit" class="btn btn-danger">削除する</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- modal -->
+
+              </td>
             </tr>
             @endforeach
           </tbody>

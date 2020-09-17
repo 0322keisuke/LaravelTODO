@@ -21,6 +21,8 @@ Route::post('/folders/{id}/todos/create', 'TodoController@store');
 Route::get('/folders/{id}/todos/{todo}/edit', 'TodoController@edit')->name('todos.edit');
 Route::match(['put', 'patch'], '/folders/{id}/todos/{todo}/update', 'TodoController@update')->name('todos.update');
 
+Route::delete('/folders/{id}/todos/{todo}', 'TodoController@destroy')->name('todos.destroy');
+
 
 Route::resource('/folders', 'FolderController');
 
