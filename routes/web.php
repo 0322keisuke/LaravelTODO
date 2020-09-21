@@ -13,6 +13,9 @@
 
 use App\Http\Controllers\TodoController;
 
+Route::get('/', 'HomeController@index')->name('home');
+
+Auth::routes();
 Route::get('/folders/{id}/todos', 'TodoController@index')->name('todos.index');
 
 Route::get('/folders/{id}/todos/create', 'TodoController@create')->name('todos.create');
