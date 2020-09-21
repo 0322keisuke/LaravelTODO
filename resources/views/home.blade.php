@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+@include('nav')
 <div class="container">
   <div class="row">
     <div class="col col-md-offset-3 col-md-6 m-3">

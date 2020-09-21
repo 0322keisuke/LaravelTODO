@@ -8,13 +8,7 @@
     <nav class="card card-default">
       <div class="card-heading">会員登録</div>
       <div class="card-body">
-        @if($errors->any())
-        <div class="alert alert-danger">
-          @foreach($errors->all() as $message)
-          <p>{{ $message }}</p>
-          @endforeach
-        </div>
-        @endif
+        @include('error_card_list')
         <form action="{{ route('register')}}" method="POST">
           @csrf
           <div class="form-group">
