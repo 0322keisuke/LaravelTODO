@@ -8,7 +8,9 @@
     <nav class="card card-default">
       <div class="card-heading">会員登録</div>
       <div class="card-body">
+
         @include('error_card_list')
+
         <form action="{{ route('register')}}" method="POST">
           @csrf
           <div class="form-group">
