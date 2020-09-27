@@ -6,12 +6,13 @@ use App\Folder;
 use App\Todo;
 use App\Http\Requests\TodoRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
     public function index(int $id)
     {
-        $folders = Folder::all()->sortByDesc('created_at');
+        $folders = Auth::user()->folders()->get()->sortByDesc('created_at');
 
         $current_folder = Folder::find($id);
 
