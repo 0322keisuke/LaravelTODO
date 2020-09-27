@@ -13,22 +13,24 @@
 
 use App\Http\Controllers\TodoController;
 
-Route::get('/', 'HomeController@index')->name('home');
-
 Auth::routes();
-Route::get('/folders/{id}/todos', 'TodoController@index')->name('todos.index');
 
-Route::get('/folders/{id}/todos/create', 'TodoController@create')->name('todos.create');
-Route::post('/folders/{id}/todos/create', 'TodoController@store');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/folders/{id}/todos/{todo}/edit', 'TodoController@edit')->name('todos.edit');
-Route::match(['put', 'patch'], '/folders/{id}/todos/{todo}/update', 'TodoController@update')->name('todos.update');
+    Route::get('/folders/{id}/todos', 'TodoController@index')->name('todos.index');
 
-Route::delete('/folders/{id}/todos/{todo}', 'TodoController@destroy')->name('todos.destroy');
+    Route::get('/folders/{id}/todos/create', 'TodoController@create')->name('todos.create');
+    Route::post('/folders/{id}/todos/create', 'TodoController@store');
+
+    Route::get('/folders/{id}/todos/{todo}/edit', 'TodoController@edit')->name('todos.edit');
+    Route::match(['put', 'patch'], '/folders/{id}/todos/{todo}/update', 'TodoController@update')->name('todos.update');
+
+    Route::delete('/folders/{id}/todos/{todo}', 'TodoController@destroy')->name('todos.destroy');
 
 
-Route::resource('/folders', 'FolderController');
-
+    Route::resource('/folders', 'FolderController');
+});
 /*
 Route::get('/', function () {
     return view('welcome');
