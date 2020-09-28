@@ -16,6 +16,10 @@ class TodoController extends Controller
 
         $current_folder = Folder::find($id);
 
+        if (is_null($current_folder)) {
+            abort(404);
+        };
+
         $todos = Todo::where('folder_id', $current_folder->id)->get()->sortByDesc('created_at');
 
         return view('todos.index', [
