@@ -35,6 +35,9 @@
 
       </div>
     </nav>
+    <div class="text-center mt-1">
+      <a href="{{ route('password.request') }}">パスワードの変更はこちらから</a>
+    </div>
   </div>
 </div>
 @endsection
